@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 🛒 Groceries - Taste Dash</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+            background-color:#FF3008;
+            height: 80px;
+            text-align: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-name {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .product-price {
+            font-size: 18px;
+            color: #ff3b30;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .discount {
+            font-size: 14px;
+            color: #4CAF50;
+        }
+
+        .add-to-cart {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #ff3b30;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .cart {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .cart-items {
+            margin: 15px 0;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: #ff3b30;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+        .footer {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 48px 0;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+        }
+
+        .footer-section h3 {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section ul li a {
+            color: #a6a6a6;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ffffff;
+        }
+
+        .app-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .app-buttons a {
+            display: block;
+        }
+
+        .app-buttons img {
+            border-radius: 8px;
+            width: 135px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#" class="logo">Taste Dash</a>
+    </nav>
+    
+    <div class="container">
+        <div class="header">
+            <h1>🛒 Groceries</h1>
+            <p>Stock up on essential groceries and pantry items</p>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="img/2-1-1.png" alt="Maggi Cup Noodles Beef" class="product-image">
+                <div class="product-info">
+                    
+                    <h3 class="product-name">Maggi Cup Noodles Beef 58g</h3>
+                    <div class="product-price">
+                        <span class="current-price">₹425</span>
+                    </div>
+                </div>
+                <button class="add-to-cart" data-id="1" data-name="Maggi Cup Noodles Beef" data-price="425">+</button>
+            </div>
+
+            <div class="product-card">
+                <img src="img/2-1-2.png" alt="Nescafe Blend 43 Instant Coffee" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Nescafe Blend 43 Instant Coffee 50g</h3>
+                    <div class="product-price">
+                        <span class="current-price">₹740</span>
+                    </div>
+                </div>
+                <button class="add-to-cart" data-id="2" data-name="Nescafe Blend 43 Instant Coffee" data-price="740">+</button>
+            </div>
+
+            <div class="product-card">
+                <img src="img/2-1-3.png" alt="Fantastic Chicken Noodles Bowl" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Fantastic Chicken Noodles Bowl 105g</h3>
+                    <div class="product-price">
+                        <span class="current-price">₹480</span>
+                    </div>
+                </div>
+                <button class="add-to-cart" data-id="3" data-name="Fantastic Chicken Noodles Bowl" data-price="480">+</button>
+            </div>
+
+            <div class="product-card">
+                <img src="img/2-1-4.png" alt="Cadbury Drinking Chocolate" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Cadbury Drinking Chocolate 250g</h3>
+                    <div class="product-price">
+                        <span class="current-price">₹615</span>
+                    </div>
+                </div>
+                <button class="add-to-cart" data-id="4" data-name="Cadbury Drinking Chocolate" data-price="615">+</button>
+            </div>
+
+            <div class="product-card">
+                <img src="img/2-1-5.png" alt="Eclipse Mints Peppermint" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Eclipse Mints Peppermint 40g</h3>
+                    <div class="product-price">
+                        <span class="current-price">₹315</span>
+                    </div>
+                </div>
+                <button class="add-to-cart" data-id="5" data-name="Eclipse Mints Peppermint" data-price="315">+</button>
+            </div>
+
+            <div class="product-card">
+                <img src="img/2-1-6.png" alt="Nutella Chocolate Hazelnut Spread" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Nutella Chocolate Hazelnut Spread 220g</h3>
+                    <div class="product-price">
+                        <span class="current-price">₹735</span>
+                    </div>
+                </div>
+                <button class="add-to-cart" data-id="6" data-name="Nutella Chocolate Hazelnut Spread" data-price="735">+</button>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <div class="cart">
+        <h3>Your Cart</h3>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-total">
+            <span>Total:</span>
+            <span id="cartTotal">₹0.00</span>
+        </div>
+        <a href="checkout.html"><button class="checkout-btn">Checkout</button></a>
+    </div>
+    <br>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Popular Categories</h3>
+                <ul>
+                    <li><a href="#">Alcohol Delivery</a></li>
+                    <li><a href="#">Back To School Delivery</a></li>
+                    <li><a href="#">Beauty Stores</a></li>
+                    <li><a href="#">Beauty Supply</a></li>
+                    <li><a href="#">Catering Near Me</a></li>
+                    <li><a href="#">Convenience Stores Canada</a></li>
+                </ul>
+            </div>
+    
+            <div class="footer-section">
+                <h3>Let Us Help You</h3>
+                <ul>
+                    <li><a href="#">Account Details</a></li>
+                    <li><a href="#">Order History</a></li>
+                    <li><a href="#">Help</a></li>
+                </ul>
+            </div>
+    
+            <div class="footer-section">
+                <h3>Doing Business</h3>
+                <ul>
+                    <li><a href="#">Become a Dasher</a></li>
+                    <li><a href="#">List Your Business</a></li>
+                    <li><a href="#">Get Dashers for Deliveries</a></li>
+                    <li><a href="#">Get DoorDash for Business</a></li>
+                </ul>
+            </div>
+    
+            <div class="footer-section">
+                <h3>Get to Know Us</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Investors</a></li>
+                    <li><a href="#">Company Blog</a></li>
+                    <li><a href="#">Engineering Blog</a></li>
+                    <li><a href="#">Merchant Blog</a></li>
+                </ul>
+            </div>
+    
+            <div class="footer-section">
+                <div class="app-buttons">
+                    <a href="#" class="app-store">
+                        <img src="img/apple.png" alt="Download on the App Store">
+                    </a>
+                    <a href="#" class="play-store">
+                        <img src="img/google.png" alt="Get it on Google Play">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let cart = [];
+        
+        // Add to cart functionality
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const id = this.dataset.id;
+                const name = this.dataset.name;
+                const price = parseFloat(this.dataset.price);
+                
+                const existingItem = cart.find(item => item.id === id);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        id,
+                        name,
+                        price,
+                        quantity: 1
+                    });
+                }
+                
+                updateCartDisplay();
+                
+                // Animation feedback
+                this.classList.add('added');
+                setTimeout(() => this.classList.remove('added'), 200);
+            });
+        });
+        
+        function updateCartDisplay() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            cartItems.innerHTML = '';
+            let total = 0;
+            
+            cart.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.className = 'cart-item';
+                itemElement.innerHTML = `
+                    <span>${item.name} x${item.quantity}</span>
+                    <span>₹${(item.price * item.quantity).toFixed(2)}</span>
+                `;
+                cartItems.appendChild(itemElement);
+                
+                total += item.price * item.quantity;
+            });
+            
+            cartTotal.textContent = `₹${total.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
